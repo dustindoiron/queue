@@ -6,9 +6,8 @@ use Pheanstalk\Pheanstalk;
 use Pheanstalk\Job as PheanstalkJob;
 use Illuminate\Queue\Jobs\BeanstalkdJob;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
-use Illuminate\Contracts\Queue\Factory as QueueFactory;
 
-class BeanstalkdQueue extends Queue implements QueueContract, QueueFactory
+class BeanstalkdQueue extends Queue implements QueueContract
 {
     /**
      * The Pheanstalk instance.
@@ -160,16 +159,5 @@ class BeanstalkdQueue extends Queue implements QueueContract, QueueFactory
     public function getPheanstalk()
     {
         return $this->pheanstalk;
-    }
-
-    /**
-     * Resolve a queue connection instance.
-     *
-     * @param  string  $name
-     * @return \Illuminate\Contracts\Queue\Queue
-     */
-    public function connection($name = null)
-    {
-        return $this;
     }
 }
